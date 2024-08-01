@@ -1,0 +1,26 @@
+name: Update Google Chrome
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-chrome:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download Google Chrome installer
+        run: Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/latest/chrome_installer.exe" -OutFile "chrome_installer.exe"
+        
+      - name: Install/Update Google Chrome
+        run: .\chrome_installer.exe /silent /install
+
+      - name: Verify Chrome version
+        run: |
+          $chromePath = "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe"
+          if (!(Test-Path $chromePath)) {
+            $chromePath = "${env:ProgramFiles}\Google\Chrome\Application\chrome.exe"
+          }
+          & $chromePath --version

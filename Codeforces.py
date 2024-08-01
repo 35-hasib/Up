@@ -20,7 +20,7 @@ from selenium.webdriver import ActionChains
 i = 0
 
 while True:
-    
+    print('mission started....!')
     try:
         driver = webdriver.Chrome()
 
@@ -31,6 +31,7 @@ while True:
         driver.find_element(By.NAME, "handleOrEmail").send_keys(name)
         driver.find_element(By.NAME, "password").send_keys(pas)
         driver.find_element(by='xpath', value='//tbody/tr[4]/td[1]/div[1]/input[1]').click()
+        print('login successfull....!')
         time.sleep(2)
         driver.find_element(by='xpath', value='''//a[contains(text(),'Problemset')]''').click()
         time.sleep(2)

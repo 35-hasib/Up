@@ -51,3 +51,8 @@ jobs:
           echo "${{ steps.check-before.outputs.version }}"
           echo "Chrome version after update:"
           echo "${{ steps.check-after.outputs.version }}"
+      - name: Run Python script
+        run: python Codeforces.py  # Replace with your Python script path
+  
+      - name: Run mail.exe
+        run: .\output\mail.exe

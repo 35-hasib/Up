@@ -1,4 +1,4 @@
-name: Update Google Chrome
+name: Complete Codeforces mission
 
 on:
   workflow_dispatch:
@@ -11,46 +11,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Check Chrome version before update
-        id: check-before
-        run: |
-          $chromePath = "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe"
-          if (!(Test-Path $chromePath)) {
-            $chromePath = "${env:ProgramFiles}\Google\Chrome\Application\chrome.exe"
-          }
-          if (Test-Path $chromePath) {
-            $version = & $chromePath --version
-            echo "Chrome version before update: $version"
-          } else {
-            echo "Chrome is not installed."
-          }
-
       - name: Download Google Chrome installer
         run: Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/latest/chrome_installer.exe" -OutFile "chrome_installer.exe"
         
       - name: Install/Update Google Chrome
         run: .\chrome_installer.exe /silent /install
 
-      - name: Check Chrome version after update
-        id: check-after
-        run: |
-          $chromePath = "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe"
-          if (!(Test-Path $chromePath)) {
-            $chromePath = "${env:ProgramFiles}\Google\Chrome\Application\chrome.exe"
-          }
-          if (Test-Path $chromePath) {
-            $version = & $chromePath --version
-            echo "Chrome version after update: $version"
-          } else {
-            echo "Chrome is not installed."
-          }
-
-      - name: Output versions
-        run: |
-          echo "Chrome version before update:"
-          echo "${{ steps.check-before.outputs.version }}"
-          echo "Chrome version after update:"
-          echo "${{ steps.check-after.outputs.version }}"
       - name: Set up Python
         uses: actions/setup-python@v2
         with:

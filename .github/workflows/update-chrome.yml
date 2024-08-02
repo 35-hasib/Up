@@ -17,15 +17,5 @@ jobs:
       - name: Install/Update Google Chrome
         run: .\chrome_installer.exe /silent /install
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-            python-version: '3.x'
-  
-      - name: Install dependencies
-        run: |
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
-
-      - name: Run Python script
-        run: python main.py
+      - name: Run exe
+        run: ./output/main.exe

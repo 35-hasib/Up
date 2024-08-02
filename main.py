@@ -28,8 +28,39 @@ while True:
         print('login successfull....!')
         time.sleep(2)
         
+        driver.find_element(by='xpath', value='''//a[contains(text(),'Problemset')]''').click()
+        time.sleep(2)
+        driver.find_element(By.NAME, "minDifficulty").send_keys('800')
+        driver.find_element(By.NAME, "maxDifficulty").send_keys('800')
+
+        driver.find_element(by='xpath', value='''//body/div[@id='body']/div[4]/div[1]/div[2]/div[3]/form[1]/div[4]/input[1]''').click()
+        time.sleep(2)
+        driver.find_element(by='xpath', value='''//tbody/tr[2]/td[5]''').click()
+        time.sleep(3)
+        driver.find_element(by='xpath', value='''//body/div[@id='body']/div[4]/div[2]/div[3]/form[1]/label[1]/input[1]''').click()
+        time.sleep(2)
+
+        driver.find_element(by='xpath', value='''//tbody/tr[2]/td[1]''').click()
+        time.sleep(2)
+
+        driver.find_element(by='xpath', value='''//span[@id='program-source-text-copy']''').click()
+        time.sleep(2)
+        driver.find_element(by='xpath', value='''//body/div[@id='facebox']/div[1]/a[1]''').click()
+        time.sleep(2)
+
+        driver.find_element(by='xpath', value='''//a[contains(text(),'Problemset')]''').click()
+        time.sleep(2)
+        driver.find_element(By.NAME, "minDifficulty").send_keys('800')
+        driver.find_element(By.NAME, "maxDifficulty").send_keys('800')
+
+        driver.find_element(by='xpath', value='''//body/div[@id='body']/div[4]/div[1]/div[2]/div[3]/form[1]/div[4]/input[1]''').click()
+        time.sleep(2)
+        driver.find_element(by='xpath', value='''//tbody/tr[2]/td[2]/div[1]''').click()
+        time.sleep(2)
+        driver.find_element(by='xpath', value='''//a[contains(text(),'Submit')]''').click()
+        time.sleep(3)
         
-    
+        print("Mission completed....!")
         driver.close();
         i = i+1
     except:
